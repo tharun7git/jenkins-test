@@ -21,10 +21,12 @@ pipeline {
                 script {
                     sh 'docker stop flask-container || true'
                     sh 'docker rm flask-container || true'
-                    docker.image('flask-demo:4').run(
-                        '--name flask-container ' +
-                        '-p 5000:5000 ' +
-                        '-d'
+            
+                    sh 'docker network prune -f'
+            
+                    sleep 5
+            
+                    sh 'docker run -d --name flask-container -p 5000:5000 flask-demo:4'
                     )
                 }
             }
