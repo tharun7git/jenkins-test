@@ -30,6 +30,13 @@ pipeline {
                     )
                 }
             }
+            stage('Verify') {
+                steps {
+                    script {
+                        sh 'curl --retry 5 --retry-delay 10 http://localhost:5000'
+        }
+    }
+}
         }
     }
     
