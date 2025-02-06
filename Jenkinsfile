@@ -14,10 +14,7 @@ pipeline {
                     sh '''
                     docker stop flask-container || true
                     docker rm flask-container || true
-                    docker run -d \
-                        --name flask-container \
-                        -p 5050:5050 \  // Host:5050 → Container:5050
-                        flask-demo:4
+                    docker run --name flask-container -p 5050:5050 flask-demo:4
                     '''
                 }
             }
